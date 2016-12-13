@@ -1,0 +1,68 @@
+<!--
+<form #form="ngForm" (ngSubmit)="submitForm(form.value)">
+  <div class="form-group">
+    <label>First Name:</label>
+    &lt;!&ndash; Since we are working with template driven forms, we can use the ngModel directive to capture the values of our forms. One thing to note if you are coming from Angular 1.x. Using ngModel as shown below creates a one-way data binding, so once we hit submit the data is only sent to the controller. If we wanted to use two-way data binding, we would have to wrap the ngModel in [()] and assign an attribute to it. Also the name of the field corresponds to the name attribute so our first input will be firstName. &ndash;&gt;
+    <input type="text" class="form-control" placeholder="{{firstname}}" name="firstName" ngModel required>
+  </div>
+  <div class="form-group">
+    <label>Last Name</label>
+    <input type="text" class="form-control" placeholder="{{lastname}}" name="lastName" ngModel required>
+  </div>
+  <div class="form-group">
+    <label>Gender</label>
+  </div>
+  &lt;!&ndash; Radio and checkboxes work much the same way &ndash;&gt;
+  <div class="radio">
+    <label>
+      <input type="radio" name="gender" value="Male" ngModel>
+      Male
+    </label>
+  </div>
+  <div class="radio">
+    <label>
+      <input type="radio" name="gender" value="Female" ngModel>
+      Female
+    </label>
+  </div>
+  <div class="form-group">
+    <input type="submit" value="Register" class="btn btn-primary">
+  </div>
+</form>
+-->
+
+<form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm.value)">
+  <div class="form-group" [ngClass]="{'has-error':!registerForm.controls['firstName'].valid}">
+    <label>First Name:</label>
+
+    <input class="form-control" type="text"  [formControl]="registerForm.controls['firstName']">
+    <div class="alert alert-danger" *ngIf="!registerForm.controls['firstName'].valid">The length of first name should be at least 5 characters.</div>
+
+  </div>
+  <div class="form-group" [ngClass]="{'has-error':!registerForm.controls['lastName'].valid}">
+    <label>Last Name</label>
+    <input class="form-control" type="text"  [formControl]="registerForm.controls['lastName']">
+    <div class="alert alert-danger" *ngIf="!registerForm.controls['firstName'].valid">The length of lastname should be between 3 to 10 characters</div>
+  </div>
+  <div class="form-group" [ngClass]="{'has-error':!registerForm.controls['gender'].valid}">
+    <label>Gender</label>
+    <div class="alert alert-danger" *ngIf="!registerForm.controls['gender'].valid">Please select a gender.</div>
+
+  </div>
+  <div class="radio">
+    <label>
+      <input type="radio" name="gender" value="Male" [formControl]="registerForm.controls['gender']">
+      Male
+    </label>
+
+  </div>
+  <div class="radio">
+    <label>
+      <input type="radio" name="gender" value="Female" [formControl]="registerForm.controls['gender']">
+      Female
+    </label>
+  </div>
+  <div class="form-group">
+    <input type="submit" value="register" [disabled]="!registerForm.valid" class="btn btn-primary">
+  </div>
+</form>

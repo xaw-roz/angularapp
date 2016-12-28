@@ -8,6 +8,9 @@ import {LoginComponent} from "./login.component";
 import { FirstComponent } from './first/first.component';
 import { SecondComponent } from './first/second.component';
 import { FormComponent } from './form/form.component';
+import { SliderComponent } from './slider/slider.component';
+import { FeedCardComponent } from './feed-card/feed-card.component';
+import { StripHtmlTagsPipe } from './pipe/strip-html-tags.pipe';
 
 @NgModule({
   declarations: [
@@ -15,13 +18,15 @@ import { FormComponent } from './form/form.component';
     LoginComponent,
     FirstComponent,
     SecondComponent,
-    FormComponent
+    FormComponent,
+    SliderComponent,
+    FeedCardComponent,
+    StripHtmlTagsPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-
     ReactiveFormsModule
   ],
   providers: [],

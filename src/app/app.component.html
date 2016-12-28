@@ -1,12 +1,21 @@
-<!--
-<h1>
+<!--<h1>
   {{title}}
 </h1>
--->
 
-<!--<loginForm></loginForm>-->
+<h1>hello world</h1>-->
 
-<app-form></app-form>
-<!--
+<!--<app-form></app-form>
+&lt;!&ndash;
 <app-first></app-first>
--->
+
+&ndash;&gt;
+<app-second></app-second>-->
+
+<!--<app-form></app-form>-->
+
+<!--<md-toolbar color="primary">
+  <span class="right"><button md-button (click)="refreshFeed()"><md-icon >refresh</md-icon></button></span>
+  <span class="center">BeCompany news</span>
+</md-toolbar>-->
+
+<app-feed-card *ngFor="let feed of feeds" [feed]="feed" ></app-feed-card>
